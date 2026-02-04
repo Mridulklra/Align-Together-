@@ -13,6 +13,7 @@ const app = express();
 app.use(
   cors({
     origin: [
+      "*",
       "https://align-together-frontend-2gwb.vercel.app",  
       "https://align-together-frontend-3dku.vercel.app",  
       "http://localhost:5173" 
