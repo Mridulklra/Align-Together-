@@ -24,7 +24,6 @@ router.post('/register', async (req, res) => {
 
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '7d' });
 
-    res.cookie('token', token, { httpOnly: true, maxAge: 7 * 24 * 60 * 60 * 1000 });
     res.status(201).json({ message: 'User created', user: { id: user._id, email: user.email }, token });
   } catch (error) {
     res.status(500).json({ message: 'Server error', error: error.message });
@@ -47,7 +46,7 @@ router.post('/login', async (req, res) => {
 
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '7d' });
 
-    res.cookie('token', token, { httpOnly: true, maxAge: 7 * 24 * 60 * 60 * 1000 });
+    res.status(201).json({ message: 'User created', user: { id: user._id, email: user.email }, token });
     res.json({ message: 'Login successful', user: { id: user._id, email: user.email }, token });
   } catch (error) {
     res.status(500).json({ message: 'Server error', error: error.message });
